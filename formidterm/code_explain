@@ -1,0 +1,10 @@
+helper_ex_1.h 는 강의자료 내에 쓰이는 헤더파일
+stdio_ex_1.c 는 echo 확인용
+cat_ex_1.c 는 cat 확인용
+
+argv_ex_2.c는 argv 어떻게 쓰는지 확인
+envi_status_ex_2.c는 파일 상태 알려줌
+seg_arr_ex_2.c 는 heap bss test segment 위치 확인
+	스택은 말그대로 스택 위에서 아래로
+	힙은 밑에서 채워나감 값은 부모가 큼?
+	
