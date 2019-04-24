@@ -1,7 +1,0 @@
-wirte to stdout
-printf by 6700 : before fork
-printf by 6700 : from parent
-printf by 6700: bye
-printf by 6700 : before fork
-printf by 6701 : from child
-printf by 6701: bye
