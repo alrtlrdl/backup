@@ -15,15 +15,16 @@ typedef struct {
 }msg_t;
 
 int main () {
-	int msqid[2];
+	int id1, id2;
 	int ndx = 0;
+	int mdx = 0;
 	msg_t data1;
 	msg_t data2;
-	if ((msqid[0] = msgget((key_t)1164, IPC_CREAT | 0666)) == -1) {
+	if ((id1 = msgget((key_t)1160, IPC_CREAT | 0666)) == -1) {
 		perror("msgget");
 		exit(1);
 	}
-	if ((msqid[1] = msgget((key_t)1163, IPC_CREAT | 0666)) == -1) {
+	if ((id2 = msgget((key_t)11608, IPC_CREAT | 0666)) == -1) {
 		perror("msgget");
 		exit(1);
 	}
@@ -31,16 +32,16 @@ int main () {
 	while(1) {
 		data2.data_type = data1.data_type = (ndx++ % 3) + 1;
 		data1.data_num = ndx;
-		data2.data_num = ndx + 10;
+		data2.data_num = mdx = mdx + 10;
 
 		sprintf(data1.data_buff, "type=%ld, ndx=%d", data1.data_type, ndx);
-		sprintf(data2.data_buff, "type=%ld, ndx=%d", data2.data_type, ndx);	
+		sprintf(data2.data_buff, "type=%ld, mdx=%d", data2.data_type, mdx);	
 
-		if (msgsnd(msqid[0], &data1, sizeof(msg_t) - sizeof(long), 0) == -1 ) {
+		if (msgsnd(id1, &data1, sizeof(msg_t) - sizeof(long), 0) == -1 ) {
 			perror("msgsnd");
 			exit(1);
 		}
-		if (msgsnd(msqid[1], &data2, sizeof(msg_t) - sizeof(long), 0) == -1 ) {
+		if (msgsnd(id2, &data2, sizeof(msg_t) - sizeof(long), 0) == -1 ) {
 			perror("msgsnd");
 			exit(1);
 		}

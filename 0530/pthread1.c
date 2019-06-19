@@ -20,7 +20,7 @@ int main() {
 
 	int thr_id;
 	int status;
-	int a = 1;
+	int a = 10;
 	int b = 2;
 
 	thr_id = pthread_create(&p_thread[0], NULL, t_function, (void *)&a);
